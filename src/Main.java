@@ -13,21 +13,24 @@ public class Main {
     }
 
     public static void deliveryBankCard() {
-        int deliveryDistance = 100;
-        String deliveryDate = getDistance(deliveryDistance);
-        System.out.println("Потребуется дней: " + deliveryDate);
-
+        int deliveryDistance = 150;
+        int deliveryDate = deliveryDate(deliveryDistance);
+        if (deliveryDate >0) {
+            System.out.println("Потребуется дней: " + deliveryDate);
+        } else {
+            System.out.println("достаки нет");
+        }
     }
 
-    public static String getDistance(int distance) {
+    public static int deliveryDate(int distance) {
         if (distance < 20) {
-            return "1 день";
+            return 1;
         } else if (distance >= 20 && distance < 60) {
-            return "2 дня";
+            return 2;
         } else if (distance >= 60 && distance < 100) {
-            return "3 дня";
+            return 3;
         }else{
-            return "Доставки нет";
+            return 0;
         }
     }
 
@@ -63,16 +66,15 @@ public class Main {
     }
 
     public static void leapYear() {
-        int year = 2000;
-        System.out.println(isYearLeap(year));
-    }
-
-    public static String isYearLeap(int year) {
-        if ((year % 4 == 0) && (year % 100 != 0) || (year % 400 == 0)) {
-            return year + " год является високосным.";
+        int year = 2024;
+        if (isYearLeap(year)) {
+            System.out.println(year + " год является високосным.");
         } else {
-            return year + " год не является високосным.";
+            System.out.println(year + " год не является високосным.");
         }
-
+    }
+    public static boolean isYearLeap(int year) {
+        boolean a = ((year % 4 == 0) && (year % 100 != 0) || (year % 400 == 0));
+        return a;
     }
 }
